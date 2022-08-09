@@ -20,6 +20,7 @@ class MyProblem(ElementwiseProblem):
 
     def _evaluate(self, x, out, *args, **kwargs):
         # 目标函数
+        # 对于这个元素方式的实现x是一个长度为的一维NumPy数组
         f1 = 100 * (x[0] ** 2 + x[1] ** 2)
         f2 = (x[0] - 1) ** 2 + x[1] ** 2
 
@@ -39,6 +40,7 @@ algorithm = NSGA2(
     sampling=FloatRandomSampling(),
     crossover=SBX(prob=0.9, eta=15),
     mutation=PM(eta=20),
+    # 重复检查
     eliminate_duplicates=True
 )
 

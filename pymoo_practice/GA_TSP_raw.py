@@ -21,8 +21,11 @@ for i in np.arange(w):
             for n in np.arange(m + 1, N - 2):
                 if d[c1[m], c1[n]] + d[c1[m + 1], c1[n + 1]] < \
                         d[c1[m], c1[m + 1]] + d[c1[n], c1[n + 1]]:
+                    temp_1 = c1[m+1:n+1]
+                    temp_2 = c1[n:m:-1]
                     c1[m + 1:n + 1] = c1[n:m:-1]
                     flag = 1
+    b = np.arange(N)
     c1[c1] = np.arange(N)
     J.append(c1)
 J = np.array(J) / (N - 1)
