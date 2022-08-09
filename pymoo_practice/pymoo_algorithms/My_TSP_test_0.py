@@ -18,6 +18,7 @@ a = np.loadtxt("Pdata17_2.txt")
 xy, d = a[:, :2], a[:, 2:]
 N = len(xy)
 
+
 class TSP_Problem(Problem):
     def __init__(self, D, num):
         super().__init__(
@@ -67,7 +68,6 @@ class TSPSampling(Sampling):
         c1[c1] = np.arange(N)
         X = c1
         return X
-
 
 # 交叉
 
