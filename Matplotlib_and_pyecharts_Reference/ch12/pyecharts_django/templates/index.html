@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<h1 align="center" style="color:red;">2019年企业经营状况分析</h1>
+<title>客户分析</title>
+<p class="parallax-alt" style="text-indent: 2em;">2019年，该电商企业在全国各个省市的有效订单数和有效客户数存在明显的差异，排名靠前的是山东省、广东省和黑龙江，其中，山东省的有效订单数为274单，有效客户数为145个，其次是广东省，依次分别为251单和124个，以及黑龙江，依次分别为238单和113个，如图所示。</p>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+</head>
+<style>
+    div {
+            margin: 0 auto;
+            background-color: #cccccc;
+        }
+</style>
+<body>
+    <div id="bar" style="width:1450px; height:550px;"></div>
+    <script>
+        var chart = echarts.init(document.getElementById('bar'), 'white', {renderer: 'canvas'});
+        $(
+            function () {
+                getData(chart);
+				setInterval(fetchData, 2000);
+            }
+        );
+        function getData() {
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8000/sales/bar",
+                dataType: 'json',
+                success: function (result) {
+                    chart.setOption(result.data);
+                }
+            });
+        }
+    </script>
+</body>
+<p class="parallax-alt" style="text-indent: 2em;"><a href="https://blog.csdn.net/shanghaiwren/">王老师的博客</a> ：在我的个人博客上，有本人已经出版的所有专著的介绍，以及在学习工作中遇到的各类问题的解决方法及心得。</p>
+</html>

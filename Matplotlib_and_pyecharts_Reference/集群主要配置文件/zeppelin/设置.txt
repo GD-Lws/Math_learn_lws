@@ -1,0 +1,51 @@
+注意：zeppelin 0.8.0以上版本需要JDK 1.8以上版本，JDK1.7已经不支持。
+我们这里使用的是zeppelin-0.7.3。
+一、配置Hive连接：
+Interpreter Name： hive
+Interpreter group：jdbc
+
+Properties          value
+common.max_count    1000
+hive.driver         org.apache.hive.jdbc.HiveDriver
+hive.password    root
+hive.url         jdbc:hive2://192.168.1.7:10000/sales;auth=noSasl    #注意是hive2不是hive
+hive.user        root
+zeppelin.interpreter.localRepo           /home/dong/zeppelin-0.7.3-bin-all/local-repo/2CNPYUV7Z
+zeppelin.interpreter.output.limit        102400
+zeppelin.jdbc.auth.type    
+zeppelin.jdbc.concurrent.max_connection  10
+zeppelin.jdbc.concurrent.use             true
+zeppelin.jdbc.keytab.location    
+zeppelin.jdbc.principal
+
+artifact                  exclude
+org.apache.hive:hive-jdbc:1.2.2    
+org.apache.hadoop:hadoop-common:2.5.2    
+mysql:mysql-connector-java:5.1.26
+
+必备条件：启动Hadoop：/home/dong/hadoop-2.5.2/sbin/start-all.sh
+          启动Hive：nohup hive --service metastore > metastore.log 2>&1 &
+                    hive --service hiveserver2  &
+
+
+二、配置Spark连接：
+Properties              value
+master                  spark://192.168.1.7:7077
+spark.executor.memory   1024m
+
+必备条件：启动Hadoop：/home/dong/hadoop-2.5.2/sbin/start-all.sh
+          启动Hive：nohup hive --service metastore > metastore.log 2>&1 &
+                    hive --service hiveserver2  &
+		  启动spark：/home/dong/spark-1.4.0-bin-hadoop2.4/sbin/start-all.sh
+		             /home/dong/spark-1.4.0-bin-hadoop2.4/sbin/stop-all.sh
+
+		  
+配置完成后的操作，启动Zeppelin：
+/home/dong/zeppelin-0.7.3-bin-all/bin/zeppelin-daemon.sh start
+/home/dong/zeppelin-0.7.3-bin-all/bin/zeppelin-daemon.sh restart
+/home/dong/zeppelin-0.7.3-bin-all/bin/zeppelin-daemon.sh stop
+
+
+
+
+		
