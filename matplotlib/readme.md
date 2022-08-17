@@ -17,7 +17,7 @@
 | 树形图 | squarify.plot(sizes, color = colors) | 适合展示层次关系，体现同级之间的数据比较(产品是否具有差异性) | test_2 |
 | 热力图 | sns.heatmap() | test_2 |
 | 甘特图 |  | 时间安排 |  test_2 |
-| 自相关图 | plot_acf(), plot_pacf() | test_2 |
+| 自相关图 | plot_acf(), plot_pacf() | | test_2 |
 
 
 
