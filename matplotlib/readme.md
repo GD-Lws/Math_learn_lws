@@ -12,12 +12,12 @@
 | 箱形图 | plt.boxplot() | 显示出一组数据中的最大值、最小值、中位数、及上下四分卫数 | test_1 |
 | 等高线图 | plt.contour()绘制等高线; plt.contourf()填充等高线 | 查看因变量Z与自变量X，Y之间的函数图像变化 | test_1 |
 | 小提琴图 | plt.violinplot() | 展示数据分布状态以及概率密度的图表 | test_1 |
-| 矢量图 | plt.quiver() | |
-| 极轴图 | 更改y轴 2*np.pi |  |
-| 树形图 | squarify.plot(sizes, color = colors) | 适合展示层次关系，体现同级之间的数据比较(产品是否具有差异性) |
-| 热力图 | sns.heatmap() | |
-| 甘特图 |  | 时间安排 |
-| 自相关图 | plot_acf(), plot_pacf() | |
+| 矢量图 | plt.quiver() | test_2 |
+| 极轴图 | 更改y轴 2*np.pi | test_2 |
+| 树形图 | squarify.plot(sizes, color = colors) | 适合展示层次关系，体现同级之间的数据比较(产品是否具有差异性) | test_2 |
+| 热力图 | sns.heatmap() | test_2 |
+| 甘特图 |  | 时间安排 |  test_2 |
+| 自相关图 | plot_acf(), plot_pacf() | test_2 |
 
 
 
