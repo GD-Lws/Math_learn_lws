@@ -32,7 +32,6 @@ def Dijkstra_all_minpath(matrix, start):
     return path_array
 
 
-
 # 领接矩阵
 a = [[0, 50, inf, 40, 25, 10], [50, 0, 15, 20, inf, 25],
      [inf, 15, 0, 10, 20, inf], [40, 20, 10, 0, 10, 25],
