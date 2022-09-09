@@ -7,6 +7,8 @@ from pymoo.core.mutation import Mutation
 from pymoo.core.sampling import Sampling
 
 
+# 子集选择问题
+# L为奖励集，定义的变量长度为L的长度，通过改变是否选择来求和
 class SubsetProblem(ElementwiseProblem):
     def __init__(self,
                  L,
@@ -36,9 +38,9 @@ class MySampling(Sampling):
         X = np.full((n_samples, problem.n_var), False, dtype=bool)
 
         for k in range(n_samples):
+            # 随机产生序列，先产生
             I = np.random.permutation(problem.n_var)[:problem.n_max]
             X[k, I] = True
-
         return X
 
 
@@ -46,6 +48,7 @@ class BinaryCrossover(Crossover):
     def __init__(self):
         super().__init__(2, 1)
 
+    # n_parents, 即是父辈
     def _do(self, problem, X, **kwargs):
         n_parents, n_matings, n_var = X.shape
 
@@ -53,7 +56,7 @@ class BinaryCrossover(Crossover):
 
         for k in range(n_matings):
             p1, p2 = X[0, k], X[1, k]
-
+            # 逐个元素与运算
             both_are_true = np.logical_and(p1, p2)
             _X[0, k, both_are_true] = True
 
@@ -88,10 +91,11 @@ algorithm = GA(
 
 res = minimize(problem,
                algorithm,
-               ('n_gen', 60),
+               ('n_gen', 90),
                seed=1,
                verbose=True)
 
+# print(L)
 print("Function value: %s" % res.F[0])
 print("Subset:", np.where(res.X)[0])
 print(L[np.where(res.X)[0]])

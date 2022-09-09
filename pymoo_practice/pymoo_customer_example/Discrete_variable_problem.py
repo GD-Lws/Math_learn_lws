@@ -19,6 +19,8 @@ class MyProblem(Problem):
         super().__init__(n_var=2, n_obj=1, n_ieq_constr=1, xl=0, xu=10, vtype=int)
 
     def _evaluate(self, x, out, *args, **kwargs):
+        ans = x * [3, 1]
+        ans_1 = np.min(ans, axis=1)
         out["F"] = - np.min(x * [3, 1], axis=1)
         out["G"] = x[:, 0] + x[:, 1] - 10
 
